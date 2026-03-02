@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galeria do Timão - 3 Colunas x 4 Linhas</title>
+    <title>Galeria do Real Madrid - 3 Colunas x 4 Linhas</title>
     <style>
         * {
             margin: 0;
@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            background: linear-gradient(135deg, #001B3A 0%, #002B5C 100%);
             min-height: 100vh;
             padding: 40px 20px;
         }
@@ -24,30 +24,56 @@
             background: #ffffff;
             padding: 30px;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(255, 255, 255, 0.1);
-            border: 2px solid #d4af37;
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.2);
+            border: 3px solid #FFD700;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Efeito de coroa no background */
+        .container::before {
+            content: '👑';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 150px;
+            opacity: 0.03;
+            transform: rotate(15deg);
+            pointer-events: none;
         }
 
         h1 {
             text-align: center;
-            color: #000000;
+            color: #001B3A;
             margin-bottom: 10px;
-            font-size: 3em;
+            font-size: 3.2em;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             font-weight: 900;
-            text-shadow: 2px 2px 0 #d4af37;
+            text-shadow: 3px 3px 0 #FFD700;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        h1::before, h1::after {
+            content: '⚪';
+            color: #FFD700;
+            font-size: 0.8em;
+            margin: 0 15px;
         }
 
         .subtitle {
             text-align: center;
-            color: #d4af37;
+            color: #FFD700;
             margin-bottom: 30px;
-            font-size: 1.2em;
+            font-size: 1.3em;
             font-weight: bold;
-            letter-spacing: 2px;
-            border-bottom: 2px solid #000000;
-            padding-bottom: 10px;
+            letter-spacing: 3px;
+            border-bottom: 2px solid #001B3A;
+            border-top: 2px solid #001B3A;
+            padding: 10px 0;
+            background: linear-gradient(to right, transparent, rgba(0,27,58,0.05), transparent);
         }
 
         .gallery {
@@ -60,33 +86,51 @@
             position: relative;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,27,58,0.3);
+            transition: all 0.4s ease;
             aspect-ratio: 1 / 1;
             cursor: pointer;
-            border: 3px solid #d4af37;
+            border: 3px solid #FFD700;
         }
 
         .gallery-item:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
-            border-color: #000000;
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4);
+            border-color: #001B3A;
         }
 
         .gallery-item::before {
+            content: '👑';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 24px;
+            color: #FFD700;
+            z-index: 3;
+            opacity: 0;
+            transform: rotate(-15deg);
+            transition: opacity 0.3s ease;
+            text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-item::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7));
+            background: linear-gradient(to bottom, rgba(0,27,58,0.2), rgba(0,27,58,0.8));
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.4s ease;
             z-index: 1;
         }
 
-        .gallery-item:hover::before {
+        .gallery-item:hover::after {
             opacity: 1;
         }
 
@@ -95,11 +139,11 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s ease;
         }
 
         .gallery-item:hover img {
-            transform: scale(1.1);
+            transform: scale(1.15);
         }
 
         .gallery-caption {
@@ -108,29 +152,29 @@
             left: 0;
             right: 0;
             padding: 20px;
-            color: #d4af37;
+            color: #FFD700;
             transform: translateY(100%);
-            transition: transform 0.3s ease;
+            transition: transform 0.4s ease;
             z-index: 2;
             text-align: center;
             font-weight: bold;
-            font-size: 1.1em;
-            text-shadow: 2px 2px 2px #000000;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-            border-top: 2px solid #d4af37;
+            font-size: 1.2em;
+            text-shadow: 2px 2px 3px #001B3A;
+            background: linear-gradient(to top, rgba(0,27,58,0.95), transparent);
+            border-top: 3px solid #FFD700;
         }
 
         .gallery-item:hover .gallery-caption {
             transform: translateY(0);
         }
 
-        /* Efeito especial para os itens */
-        .gallery-item:nth-child(odd) {
-            border-color: #000000;
+        /* Efeito de brilho nos itens */
+        .gallery-item:nth-child(3n+1) {
+            border-color: #001B3A;
         }
 
-        .gallery-item:nth-child(odd):hover {
-            border-color: #d4af37;
+        .gallery-item:nth-child(3n+1):hover {
+            border-color: #FFD700;
         }
 
         /* Responsividade */
@@ -140,7 +184,11 @@
             }
             
             h1 {
-                font-size: 2.2em;
+                font-size: 2.5em;
+            }
+            
+            h1::before, h1::after {
+                display: none;
             }
             
             .container {
@@ -154,151 +202,216 @@
             }
             
             h1 {
-                font-size: 1.8em;
+                font-size: 2em;
             }
             
             .subtitle {
-                font-size: 1em;
+                font-size: 1.1em;
+                letter-spacing: 2px;
             }
         }
 
         /* Cores de fundo para as imagens que não carregarem */
-        .item-1 { background: linear-gradient(135deg, #000000, #1a1a1a); }
-        .item-2 { background: linear-gradient(135deg, #1a1a1a, #000000); }
-        .item-3 { background: linear-gradient(135deg, #000000, #2a2a2a); }
-        .item-4 { background: linear-gradient(135deg, #2a2a2a, #000000); }
-        .item-5 { background: linear-gradient(135deg, #000000, #333333); }
-        .item-6 { background: linear-gradient(135deg, #333333, #000000); }
-        .item-7 { background: linear-gradient(135deg, #000000, #404040); }
-        .item-8 { background: linear-gradient(135deg, #404040, #000000); }
-        .item-9 { background: linear-gradient(135deg, #000000, #4d4d4d); }
-        .item-10 { background: linear-gradient(135deg, #4d4d4d, #000000); }
-        .item-11 { background: linear-gradient(135deg, #000000, #595959); }
-        .item-12 { background: linear-gradient(135deg, #595959, #000000); }
+        .item-1 { background: linear-gradient(135deg, #001B3A, #002B5C); }
+        .item-2 { background: linear-gradient(135deg, #002B5C, #001B3A); }
+        .item-3 { background: linear-gradient(135deg, #001B3A, #003B6F); }
+        .item-4 { background: linear-gradient(135deg, #003B6F, #001B3A); }
+        .item-5 { background: linear-gradient(135deg, #001B3A, #004B8F); }
+        .item-6 { background: linear-gradient(135deg, #004B8F, #001B3A); }
+        .item-7 { background: linear-gradient(135deg, #001B3A, #005BAF); }
+        .item-8 { background: linear-gradient(135deg, #005BAF, #001B3A); }
+        .item-9 { background: linear-gradient(135deg, #001B3A, #006BCF); }
+        .item-10 { background: linear-gradient(135deg, #006BCF, #001B3A); }
+        .item-11 { background: linear-gradient(135deg, #001B3A, #007BEF); }
+        .item-12 { background: linear-gradient(135deg, #007BEF, #001B3A); }
 
-        /* Footer com o símbolo do Corinthians */
+        /* Footer estilizado */
         .footer {
             text-align: center;
             margin-top: 30px;
             padding-top: 20px;
-            border-top: 2px solid #d4af37;
-            font-size: 1.5em;
+            border-top: 3px solid #001B3A;
+            font-size: 1.3em;
             font-weight: bold;
-            color: #000000;
+            color: #001B3A;
+            position: relative;
         }
 
         .footer span {
-            color: #d4af37;
-            font-size: 1.8em;
-            margin: 0 5px;
+            color: #FFD700;
+            font-size: 1.5em;
+            margin: 0 10px;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
         }
 
-        .corinthians-flag {
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .real-flag {
             display: flex;
             justify-content: center;
-            gap: 5px;
-            margin-bottom: 15px;
+            gap: 8px;
+            margin-bottom: 20px;
         }
 
         .flag-stripe {
-            width: 40px;
-            height: 20px;
+            width: 50px;
+            height: 25px;
+            border-radius: 5px;
         }
 
-        .black-stripe { background-color: #000000; }
-        .gold-stripe { background-color: #d4af37; }
+        .blue-stripe { background-color: #001B3A; }
+        .gold-stripe { background-color: #FFD700; }
+
+        .coroa-symbol {
+            display: inline-block;
+            font-size: 2em;
+            margin: 0 10px;
+            color: #FFD700;
+            filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.3));
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            color: #001B3A;
+            font-weight: bold;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #f5f5f5, #ffffff);
+            border-radius: 10px;
+            border: 2px solid #FFD700;
+        }
+
+        .stat-number {
+            font-size: 1.8em;
+            color: #FFD700;
+            font-weight: 900;
+        }
+
+        .stat-label {
+            font-size: 0.8em;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="corinthians-flag">
-            <div class="flag-stripe black-stripe"></div>
+        <div class="real-flag">
+            <div class="flag-stripe blue-stripe"></div>
             <div class="flag-stripe gold-stripe"></div>
-            <div class="flag-stripe black-stripe"></div>
+            <div class="flag-stripe blue-stripe"></div>
             <div class="flag-stripe gold-stripe"></div>
-            <div class="flag-stripe black-stripe"></div>
+            <div class="flag-stripe blue-stripe"></div>
         </div>
         
-        <h1>S.C. CORINTHIANS PAULISTA</h1>
-        <div class="subtitle">⚫🟡 GALERIA DO TIMÃO ⚫🟡</div>
+        <h1>REAL MADRID C.F.</h1>
+        <div class="subtitle">👑 O MAIOR CLUBE DO MUNDO 👑</div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">14</div>
+                <div class="stat-label">CHAMPIONS</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">35</div>
+                <div class="stat-label">LIGAS</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">20</div>
+                <div class="stat-label">COPAS</div>
+            </div>
+        </div>
         
         <div class="gallery">
-            <!-- Imagem 1 - Arena Corinthians -->
+            <!-- Imagem 1 - Santiago Bernabéu -->
             <div class="gallery-item item-1">
-                <img src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=400&h=400&fit=crop" alt="Arena Corinthians - Neo Química Arena">
-                <div class="gallery-caption">🏟️ NEO QUÍMICA ARENA</div>
+                <img src="https://images.unsplash.com/photo-1599202860130-b600f494136b?w=400&h=400&fit=crop" alt="Estádio Santiago Bernabéu">
+                <div class="gallery-caption">🏟️ SANTIAGO BERNABÉU</div>
             </div>
             
             <!-- Imagem 2 - Time em campo -->
             <div class="gallery-item item-2">
-                <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=400&h=400&fit=crop" alt="Time do Corinthians em campo">
-                <div class="gallery-caption">⚽ TIME DO POVO</div>
+                <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=400&h=400&fit=crop" alt="Time do Real Madrid">
+                <div class="gallery-caption">⚽ OS GALÁTICOS</div>
             </div>
             
             <!-- Imagem 3 - Torcida -->
             <div class="gallery-item item-3">
-                <img src="https://images.unsplash.com/photo-1589488623989-8a5781c3e1cf?w=400&h=400&fit=crop" alt="Torcida do Corinthians">
-                <div class="gallery-caption">🙌 FIEL TORCIDA</div>
+                <img src="https://images.unsplash.com/photo-1589488623989-8a5781c3e1cf?w=400&h=400&fit=crop" alt="Torcida do Real Madrid">
+                <div class="gallery-caption">🙌 MADRIDISTAS</div>
             </div>
             
             <!-- Imagem 4 - Escudo -->
             <div class="gallery-item item-4">
-                <img src="https://images.unsplash.com/photo-1589488623991-3e5c3e5e5e5c?w=400&h=400&fit=crop" alt="Escudo do Corinthians">
-                <div class="gallery-caption">🛡️ ESCUDO ETERNO</div>
+                <img src="https://images.unsplash.com/photo-1589488623991-3e5c3e5e5e5c?w=400&h=400&fit=crop" alt="Escudo do Real Madrid">
+                <div class="gallery-caption">👑 ESCUDO REAL</div>
             </div>
             
-            <!-- Imagem 5 - Jogador histórico -->
+            <!-- Imagem 5 - Lendas -->
             <div class="gallery-item item-5">
-                <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=400&h=400&fit=crop" alt="Jogador do Corinthians">
-                <div class="gallery-caption">🌟 ÍDOLOS ETERNOS</div>
+                <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=400&h=400&fit=crop" alt="Lendas do Real Madrid">
+                <div class="gallery-caption">🌟 LENDAS ETERNAS</div>
             </div>
             
-            <!-- Imagem 6 - Taças -->
+            <!-- Imagem 6 - Champions League -->
             <div class="gallery-item item-6">
-                <img src="https://images.unsplash.com/photo-1589488623989-8a5781c3e1cf?w=400&h=400&fit=crop" alt="Taças do Corinthians">
-                <div class="gallery-caption">🏆 MUNDIAL 2012</div>
+                <img src="https://images.unsplash.com/photo-1589488623989-8a5781c3e1cf?w=400&h=400&fit=crop" alt="Taças da Champions">
+                <div class="gallery-caption">🏆 REI DA EUROPA</div>
             </div>
             
-            <!-- Imagem 7 - Camisa histórica -->
+            <!-- Imagem 7 - Camisa Branca -->
             <div class="gallery-item item-7">
-                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop" alt="Camisa do Corinthians">
-                <div class="gallery-caption">⚫ CAMISA SAGRADA</div>
+                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop" alt="Camisa do Real Madrid">
+                <div class="gallery-caption">⚪ CAMISA SAGRADA</div>
             </div>
             
-            <!-- Imagem 8 - Gaviões da Fiel -->
+            <!-- Imagem 8 - Halloween -->
             <div class="gallery-item item-8">
-                <img src="https://images.unsplash.com/photo-1589488623991-3e5c3e5e5e5c?w=400&h=400&fit=crop" alt="Gaviões da Fiel">
-                <div class="gallery-caption">🦅 GAVIÕES DA FIEL</div>
+                <img src="https://images.unsplash.com/photo-1589488623991-3e5c3e5e5e5c?w=400&h=400&fit=crop" alt="Torcida organizada">
+                <div class="gallery-caption">🎭 ULTRA SUR</div>
             </div>
             
-            <!-- Imagem 9 - Gol histórico -->
+            <!-- Imagem 9 - Gols Históricos -->
             <div class="gallery-item item-9">
-                <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=400&h=400&fit=crop" alt="Gol do Corinthians">
+                <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=400&h=400&fit=crop" alt="Gols do Real Madrid">
                 <div class="gallery-caption">⚽ GOLS INESQUECÍVEIS</div>
             </div>
             
             <!-- Imagem 10 - Basquete -->
             <div class="gallery-item item-10">
-                <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400&h=400&fit=crop" alt="Basquete do Corinthians">
-                <div class="gallery-caption">🏀 TIMÃO DO BASQUETE</div>
+                <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400&h=400&fit=crop" alt="Basquete do Real Madrid">
+                <div class="gallery-caption">🏀 REAL DE BASQUETE</div>
             </div>
             
             <!-- Imagem 11 - Futebol Feminino -->
             <div class="gallery-item item-11">
-                <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=400&h=400&fit=crop" alt="Futebol Feminino Corinthians">
-                <div class="gallery-caption">👧 GUERRREIRAS</div>
+                <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=400&h=400&fit=crop" alt="Futebol Feminino Real Madrid">
+                <div class="gallery-caption">👸 AS MERENGUES</div>
             </div>
             
-            <!-- Imagem 12 - Símbolos -->
+            <!-- Imagem 12 - La Decima -->
             <div class="gallery-item item-12">
-                <img src="https://images.unsplash.com/photo-1589488623989-8a5781c3e1cf?w=400&h=400&fit=crop" alt="Símbolos do Corinthians">
-                <div class="gallery-caption">⚫🟡 CORINTHIANS</div>
+                <img src="https://images.unsplash.com/photo-1589488623989-8a5781c3e1cf?w=400&h=400&fit=crop" alt="La Décima">
+                <div class="gallery-caption">🔟 LA DÉCIMA</div>
             </div>
         </div>
 
         <div class="footer">
-            <span>⚫</span> SPORT CLUB CORINTHIANS PAULISTA <span>🟡</span><br>
-            <small style="font-size: 0.6em; color: #666;">1910 - ETERNO CAMPEÃO</small>
+            <span>👑</span> REAL MADRID CLUB DE FÚTBOL <span>👑</span><br>
+            <small style="font-size: 0.6em; color: #666;">1902 - O MAIOR DO SÉCULO XX • 14 EUROPEAN CUPS</small>
+        </div>
+        
+        <div style="text-align: center; margin-top: 15px; color: #FFD700; font-size: 1.2em;">
+            ⚪ HALA MADRID Y NADA MÁS ⚪
         </div>
     </div>
 </body>
