@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galeria do Santos FC - 3 Colunas x 4 Linhas</title>
+    <title>Galeria do Santos FC - Preto e Branco</title>
     <style>
         * {
             margin: 0;
@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #000000 0%, #1a3b4f 100%);
+            background: linear-gradient(135deg, #000000 0%, #333333 100%);
             min-height: 100vh;
             padding: 40px 20px;
             position: relative;
@@ -21,25 +21,27 @@
         }
 
         body::before {
-            content: '🐳';
+            content: '⚽';
             position: absolute;
             bottom: 10px;
             left: 10px;
             font-size: 100px;
-            opacity: 0.1;
+            opacity: 0.03;
             transform: rotate(-10deg);
             pointer-events: none;
+            color: #ffffff;
         }
 
         body::after {
-            content: '⚽';
+            content: '🐳';
             position: absolute;
             top: 10px;
             right: 10px;
             font-size: 100px;
-            opacity: 0.1;
+            opacity: 0.03;
             transform: rotate(15deg);
             pointer-events: none;
+            color: #ffffff;
         }
 
         .container {
@@ -48,108 +50,103 @@
             background: #ffffff;
             padding: 30px;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(255, 255, 255, 0.15);
-            border: 4px solid #ffffff;
+            box-shadow: 0 20px 60px rgba(255, 255, 255, 0.1);
+            border: 2px solid #000000;
             position: relative;
             overflow: hidden;
             z-index: 1;
         }
 
-        /* Efeito de ondas do mar */
+        /* Efeito de listras sutis */
         .container::after {
             content: '';
             position: absolute;
-            bottom: 0;
+            top: 0;
             left: 0;
             right: 0;
-            height: 20px;
-            background: linear-gradient(90deg, transparent, #008000, #ffff00, #008000, transparent);
-            opacity: 0.3;
+            bottom: 0;
+            background: repeating-linear-gradient(45deg, rgba(0,0,0,0.02) 0px, rgba(0,0,0,0.02) 20px, rgba(255,255,255,0.02) 20px, rgba(255,255,255,0.02) 40px);
             pointer-events: none;
+            z-index: 0;
         }
 
         h1 {
             text-align: center;
             color: #000000;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
             font-size: 3.5em;
             text-transform: uppercase;
             letter-spacing: 5px;
             font-weight: 900;
-            text-shadow: 3px 3px 0 #ffff00, 6px 6px 0 #008000;
+            text-shadow: 2px 2px 0 #cccccc, 4px 4px 0 #999999, 6px 6px 0 #666666;
             position: relative;
             display: inline-block;
             width: 100%;
             font-family: 'Arial Black', sans-serif;
+            z-index: 1;
         }
 
         h1::before {
             content: '⚽';
-            color: #008000;
+            color: #666666;
             font-size: 0.8em;
             margin-right: 15px;
-            filter: drop-shadow(2px 2px 2px #000000);
+            filter: grayscale(100%);
         }
 
         h1::after {
             content: '⚽';
-            color: #ffff00;
+            color: #666666;
             font-size: 0.8em;
             margin-left: 15px;
-            filter: drop-shadow(2px 2px 2px #000000);
+            filter: grayscale(100%);
         }
 
         .subtitle {
             text-align: center;
-            color: #000000;
-            margin-bottom: 25px;
+            color: #ffffff;
+            margin-bottom: 30px;
             font-size: 1.4em;
             font-weight: bold;
             letter-spacing: 3px;
-            background: linear-gradient(90deg, #008000, #ffff00, #008000);
+            background: linear-gradient(90deg, #000000, #444444, #000000);
             padding: 12px 0;
             border-radius: 50px;
             max-width: 80%;
             margin-left: auto;
             margin-right: auto;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            border: 2px solid #000000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            border: 2px solid #ffffff;
+            position: relative;
+            z-index: 1;
         }
 
         .gallery {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 25px;
+            position: relative;
+            z-index: 1;
         }
 
         .gallery-item {
             position: relative;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,128,0,0.4);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
             transition: all 0.4s ease;
             aspect-ratio: 1 / 1;
             cursor: pointer;
-            border: 4px solid transparent;
-            background: linear-gradient(45deg, #008000, #ffff00);
-            background-clip: padding-box;
-            animation: borderGlow 2s infinite alternate;
-        }
-
-        @keyframes borderGlow {
-            from {
-                box-shadow: 0 5px 15px rgba(0,128,0,0.4);
-            }
-            to {
-                box-shadow: 0 5px 25px rgba(255,255,0,0.6);
-            }
+            border: 3px solid #000000;
+            filter: grayscale(100%);
+            background: linear-gradient(45deg, #ffffff, #cccccc);
         }
 
         .gallery-item:hover {
             transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(255, 255, 0, 0.6);
-            border-color: #008000;
-            animation: none;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.8);
+            border-color: #ffffff;
+            filter: grayscale(50%);
         }
 
         .gallery-item::before {
@@ -158,13 +155,13 @@
             top: 10px;
             left: 10px;
             font-size: 28px;
-            color: #ffffff;
+            color: #000000;
             z-index: 3;
             opacity: 0;
             transform: rotate(-10deg) scale(0);
             transition: all 0.4s ease;
-            text-shadow: 2px 2px 2px #008000;
-            filter: drop-shadow(2px 2px 2px #000000);
+            text-shadow: 2px 2px 2px #ffffff;
+            filter: grayscale(100%);
         }
 
         .gallery-item:hover::before {
@@ -179,7 +176,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(0,128,0,0.3), rgba(255,255,0,0.3));
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(0,0,0,0.4));
             opacity: 0;
             transition: opacity 0.4s ease;
             z-index: 1;
@@ -195,10 +192,12 @@
             object-fit: cover;
             display: block;
             transition: transform 0.6s ease;
+            filter: grayscale(100%) contrast(1.1);
         }
 
         .gallery-item:hover img {
             transform: scale(1.15);
+            filter: grayscale(80%) contrast(1.2);
         }
 
         .gallery-caption {
@@ -207,25 +206,29 @@
             left: 0;
             right: 0;
             padding: 20px;
-            color: #ffff00;
+            color: #ffffff;
             transform: translateY(100%);
             transition: transform 0.4s ease;
             z-index: 2;
             text-align: center;
             font-weight: bold;
             font-size: 1.2em;
-            text-shadow: 2px 2px 2px #008000, 1px 1px 2px #000000;
-            background: linear-gradient(to top, rgba(0,128,0,0.95), rgba(0,128,0,0.7), transparent);
-            border-top: 4px solid #ffff00;
+            text-shadow: 2px 2px 2px #000000;
+            background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.7), transparent);
+            border-top: 3px solid #ffffff;
         }
 
         .gallery-item:hover .gallery-caption {
             transform: translateY(0);
         }
 
-        /* Padrão alternado de cores nas bordas */
+        /* Padrão alternado de bordas */
         .gallery-item:nth-child(even) {
-            background: linear-gradient(45deg, #ffff00, #008000);
+            border-color: #666666;
+        }
+
+        .gallery-item:nth-child(even):hover {
+            border-color: #ffffff;
         }
 
         /* Responsividade */
@@ -267,55 +270,53 @@
             }
         }
 
-        /* Cores de fundo para as imagens que não carregarem */
-        .item-1 { background: linear-gradient(135deg, #008000, #006400); }
-        .item-2 { background: linear-gradient(135deg, #ffff00, #ffd700); }
-        .item-3 { background: linear-gradient(135deg, #006400, #008000); }
-        .item-4 { background: linear-gradient(135deg, #ffd700, #ffff00); }
-        .item-5 { background: linear-gradient(135deg, #008000, #228B22); }
-        .item-6 { background: linear-gradient(135deg, #ffff00, #FFA500); }
-        .item-7 { background: linear-gradient(135deg, #228B22, #008000); }
-        .item-8 { background: linear-gradient(135deg, #FFA500, #ffff00); }
-        .item-9 { background: linear-gradient(135deg, #006400, #2E8B57); }
-        .item-10 { background: linear-gradient(135deg, #ffd700, #F0E68C); }
-        .item-11 { background: linear-gradient(135deg, #2E8B57, #006400); }
-        .item-12 { background: linear-gradient(135deg, #F0E68C, #ffd700); }
+        /* Cores de fundo em escala de cinza para as imagens que não carregarem */
+        .item-1 { background: linear-gradient(135deg, #000000, #1a1a1a); }
+        .item-2 { background: linear-gradient(135deg, #1a1a1a, #333333); }
+        .item-3 { background: linear-gradient(135deg, #333333, #4d4d4d); }
+        .item-4 { background: linear-gradient(135deg, #4d4d4d, #666666); }
+        .item-5 { background: linear-gradient(135deg, #666666, #808080); }
+        .item-6 { background: linear-gradient(135deg, #808080, #999999); }
+        .item-7 { background: linear-gradient(135deg, #999999, #b3b3b3); }
+        .item-8 { background: linear-gradient(135deg, #b3b3b3, #cccccc); }
+        .item-9 { background: linear-gradient(135deg, #cccccc, #e6e6e6); }
+        .item-10 { background: linear-gradient(135deg, #e6e6e6, #ffffff); }
+        .item-11 { background: linear-gradient(135deg, #ffffff, #e6e6e6); }
+        .item-12 { background: linear-gradient(135deg, #e6e6e6, #cccccc); }
 
-        /* Footer estilizado */
+        /* Footer estilizado em preto e branco */
         .footer {
             text-align: center;
             margin-top: 30px;
             padding-top: 20px;
-            border-top: 4px solid #008000;
+            border-top: 3px solid #000000;
             font-size: 1.3em;
             font-weight: bold;
             color: #000000;
             position: relative;
+            z-index: 1;
         }
 
         .footer span {
-            color: #008000;
+            color: #333333;
             font-size: 1.5em;
             margin: 0 10px;
             display: inline-block;
-            animation: bounce 2s ease-in-out infinite;
+            animation: pulse 2s ease-in-out infinite;
         }
 
-        .footer .yellow {
-            color: #ffff00;
-            text-shadow: 1px 1px 2px #000000;
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-
-        .santos-flag {
+        .santos-flag-bw {
             display: flex;
             justify-content: center;
             gap: 8px;
             margin-bottom: 20px;
+            z-index: 1;
+            position: relative;
         }
 
         .flag-stripe {
@@ -325,30 +326,31 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
 
-        .green-stripe { background-color: #008000; }
-        .yellow-stripe { background-color: #ffff00; }
+        .black-stripe { background-color: #000000; }
+        .white-stripe { background-color: #ffffff; border: 1px solid #000000; }
 
         .fish-symbol {
             display: inline-block;
             font-size: 2.5em;
             margin: 0 10px;
-            color: #008000;
-            filter: drop-shadow(2px 2px 3px #ffff00);
-            animation: swim 4s ease-in-out infinite;
+            color: #000000;
+            filter: grayscale(100%);
+            animation: float 3s ease-in-out infinite;
         }
 
-        @keyframes swim {
-            0%, 100% { transform: translateX(0) rotate(0deg); }
-            25% { transform: translateX(5px) rotate(5deg); }
-            75% { transform: translateX(-5px) rotate(-5deg); }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
 
         .stats {
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 20px;
             margin: 20px 0 30px;
             flex-wrap: wrap;
+            z-index: 1;
+            position: relative;
         }
 
         .stat-item {
@@ -356,61 +358,116 @@
             padding: 12px 20px;
             background: linear-gradient(135deg, #ffffff, #f0f0f0);
             border-radius: 15px;
-            border: 3px solid #008000;
-            box-shadow: 0 5px 10px rgba(0,128,0,0.2);
+            border: 2px solid #000000;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
             min-width: 100px;
         }
 
         .stat-number {
             font-size: 2em;
-            color: #008000;
+            color: #000000;
             font-weight: 900;
-            text-shadow: 1px 1px 2px #ffff00;
+            text-shadow: 1px 1px 2px #ffffff;
         }
 
         .stat-label {
             font-size: 0.9em;
             text-transform: uppercase;
             font-weight: bold;
-            color: #000000;
+            color: #333333;
         }
 
-        .pelé-tribute {
-            background: linear-gradient(90deg, #008000, #ffff00, #008000);
-            color: #000000;
+        .pelé-tribute-bw {
+            background: linear-gradient(90deg, #000000, #444444, #000000);
+            color: #ffffff;
             padding: 15px;
             border-radius: 50px;
             margin: 20px 0;
             font-weight: bold;
             font-size: 1.2em;
             text-align: center;
-            border: 2px solid #000000;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border: 2px solid #ffffff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            z-index: 1;
+            position: relative;
         }
 
-        .pelé-tribute span {
+        .pelé-tribute-bw span {
             font-size: 1.5em;
             margin: 0 5px;
+            filter: grayscale(100%);
+        }
+
+        .quote-bw {
+            text-align: center;
+            margin-top: 20px;
+            font-style: italic;
+            color: #333333;
+            font-size: 0.9em;
+            padding: 15px;
+            border-top: 1px solid #000000;
+            border-bottom: 1px solid #000000;
+            background: #f5f5f5;
+        }
+
+        .quote-bw::before {
+            content: '"';
+            font-size: 2em;
+            color: #999999;
+            margin-right: 5px;
+        }
+
+        .quote-bw::after {
+            content: '"';
+            font-size: 2em;
+            color: #999999;
+            margin-left: 5px;
+        }
+
+        /* Efeito de vinheta nas bordas */
+        .vignette {
+            position: relative;
+        }
+
+        .vignette::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent 50%, rgba(0,0,0,0.1) 100%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .santos-symbol {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 15px 0;
+            font-size: 1.5em;
+            color: #000000;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="santos-flag">
-            <div class="flag-stripe green-stripe"></div>
-            <div class="flag-stripe yellow-stripe"></div>
-            <div class="flag-stripe green-stripe"></div>
-            <div class="flag-stripe yellow-stripe"></div>
-            <div class="flag-stripe green-stripe"></div>
+    <div class="container vignette">
+        <div class="santos-flag-bw">
+            <div class="flag-stripe black-stripe"></div>
+            <div class="flag-stripe white-stripe"></div>
+            <div class="flag-stripe black-stripe"></div>
+            <div class="flag-stripe white-stripe"></div>
+            <div class="flag-stripe black-stripe"></div>
         </div>
         
         <h1>SANTOS F.C.</h1>
         <div class="subtitle">
-            <span class="fish-symbol">🐳</span> O time da virada do século <span class="fish-symbol">🐳</span>
+            <span class="fish-symbol">🐳</span> O TIME DA VILA <span class="fish-symbol">🐳</span>
         </div>
         
-        <div class="pelé-tribute">
-            <span>👑</span> REI PELÉ - O MAIOR DE TODOS OS TEMPOS <span>👑</span>
+        <div class="pelé-tribute-bw">
+            <span>👑</span> REI PELÉ - 1000 GOLS <span>👑</span>
         </div>
         
         <div class="stats">
@@ -433,91 +490,93 @@
         </div>
         
         <div class="gallery">
-            <!-- Imagem 1 - Vila Belmiro -->
+            <!-- Imagem 1 - Vila Belmiro em PB -->
             <div class="gallery-item item-1">
                 <img src="https://images.unsplash.com/photo-1599202860130-b600f494136b?w=400&h=400&fit=crop" alt="Estádio Urbano Caldeira - Vila Belmiro">
                 <div class="gallery-caption">🏟️ VILA BELMIRO</div>
             </div>
             
-            <!-- Imagem 2 - Pelé -->
+            <!-- Imagem 2 - Pelé clássico -->
             <div class="gallery-item item-2">
                 <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=400&h=400&fit=crop" alt="Rei Pelé">
-                <div class="gallery-caption">👑 REI PELÉ - 1000 GOLS</div>
+                <div class="gallery-caption">👑 REI PELÉ</div>
             </div>
             
-            <!-- Imagem 3 - Torcida -->
+            <!-- Imagem 3 - Torcida antiga -->
             <div class="gallery-item item-3">
                 <img src="https://images.unsplash.com/photo-1589488623989-8a5781c3e1cf?w=400&h=400&fit=crop" alt="Torcida do Santos">
-                <div class="gallery-caption">🐳 TORCIDA SANTISTA</div>
+                <div class="gallery-caption">🐳 TORCIDA</div>
             </div>
             
-            <!-- Imagem 4 - Escudo -->
+            <!-- Imagem 4 - Escudo clássico -->
             <div class="gallery-item item-4">
                 <img src="https://images.unsplash.com/photo-1589488623991-3e5c3e5e5e5c?w=400&h=400&fit=crop" alt="Escudo do Santos">
-                <div class="gallery-caption">⚓ ESCUDO ETERNO</div>
+                <div class="gallery-caption">⚓ ESCUDO</div>
             </div>
             
-            <!-- Imagem 5 - Meninos da Vila -->
+            <!-- Imagem 5 - Meninos da Vila vintage -->
             <div class="gallery-item item-5">
                 <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=400&h=400&fit=crop" alt="Meninos da Vila">
-                <div class="gallery-caption">🌟 MENINOS DA VILA</div>
+                <div class="gallery-caption">🌟 MENINOS</div>
             </div>
             
-            <!-- Imagem 6 - Taças -->
+            <!-- Imagem 6 - Taças antigas -->
             <div class="gallery-item item-6">
                 <img src="https://images.unsplash.com/photo-1589488623989-8a5781c3e1cf?w=400&h=400&fit=crop" alt="Taças do Santos">
-                <div class="gallery-caption">🏆 MUNDIAL 1962/1963</div>
+                <div class="gallery-caption">🏆 MUNDIAL</div>
             </div>
             
-            <!-- Imagem 7 - Camisa Sagrada -->
+            <!-- Imagem 7 - Camisa histórica -->
             <div class="gallery-item item-7">
                 <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop" alt="Camisa do Santos">
-                <div class="gallery-caption">⚪ CAMISA SANTISTA</div>
+                <div class="gallery-caption">⚪ CAMISA</div>
             </div>
             
-            <!-- Imagem 8 - Peixe -->
+            <!-- Imagem 8 - Mascote clássico -->
             <div class="gallery-item item-8">
                 <img src="https://images.unsplash.com/photo-1589488623991-3e5c3e5e5e5c?w=400&h=400&fit=crop" alt="Mascote Peixe">
-                <div class="gallery-caption">🐳 O PEIXÃO</div>
+                <div class="gallery-caption">🐳 PEIXE</div>
             </div>
             
-            <!-- Imagem 9 - Gols Históricos -->
+            <!-- Imagem 9 - Gols históricos -->
             <div class="gallery-item item-9">
                 <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=400&h=400&fit=crop" alt="Gols do Santos">
-                <div class="gallery-caption">⚽ GOLS IMORTAIS</div>
+                <div class="gallery-caption">⚽ GOLS</div>
             </div>
             
-            <!-- Imagem 10 - Libertadores -->
+            <!-- Imagem 10 - Libertadores 60's -->
             <div class="gallery-item item-10">
                 <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400&h=400&fit=crop" alt="Libertadores">
-                <div class="gallery-caption">🏆 LIBERTADORES 2011</div>
+                <div class="gallery-caption">🏆 LIBERTADORES</div>
             </div>
             
-            <!-- Imagem 11 - Neymar -->
+            <!-- Imagem 11 - Ídolos eternos -->
             <div class="gallery-item item-11">
-                <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=400&h=400&fit=crop" alt="Neymar no Santos">
-                <div class="gallery-caption">🇧🇷 NEYMAR JR</div>
+                <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=400&h=400&fit=crop" alt="Ídolos do Santos">
+                <div class="gallery-caption">⭐ ÍDOLOS</div>
             </div>
             
-            <!-- Imagem 12 - Craques Históricos -->
+            <!-- Imagem 12 - Time histórico -->
             <div class="gallery-item item-12">
-                <img src="https://images.unsplash.com/photo-1589488623989-8a5781c3e1cf?w=400&h=400&fit=crop" alt="Craques do Santos">
-                <div class="gallery-caption">⚡ ZITO • COUTINHO • PEIXE</div>
+                <img src="https://images.unsplash.com/photo-1589488623989-8a5781c3e1cf?w=400&h=400&fit=crop" alt="Time do Santos">
+                <div class="gallery-caption">⚪ TIME ETERNO</div>
             </div>
         </div>
 
+        <div class="santos-symbol">
+            <span>⚽</span>
+            <span>🐳</span>
+            <span>⚓</span>
+            <span>⚽</span>
+        </div>
+
         <div class="footer">
-            <span>🐳</span> SANTOS FUTEBOL CLUBE <span class="yellow">⚽</span><br>
-            <small style="font-size: 0.6em; color: #666;">1912 - ETERNAMENTE O TIME DO REI</small>
+            <span>⚽</span> SANTOS FUTEBOL CLUBE <span>⚽</span><br>
+            <small style="font-size: 0.6em; color: #666666;">1912 - ETERNAMENTE O TIME DO REI</small>
         </div>
         
-        <div style="text-align: center; margin-top: 15px; font-size: 1.1em; font-weight: bold;">
-            <span style="color: #008000;">⚪</span> MENINOS DA VILA <span style="color: #ffff00;">⚫</span>
-        </div>
-        
-        <!-- Hino em forma de homenagem -->
-        <div style="text-align: center; margin-top: 20px; font-style: italic; color: #008000; font-size: 0.9em; padding: 10px; border-top: 2px dashed #ffff00;">
-            "Ôh, Santos! Glorioso! Time do Rei! Tradição e amor!"
+        <div class="quote-bw">
+            Santos Futebol Clube - O time que encantou o mundo com seu futebol arte
         </div>
     </div>
 </body>
